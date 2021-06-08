@@ -3,7 +3,7 @@ body {
 }
 
 .padding {
-    padding: 300rem
+    padding: 3rem !important
 }
 
 .user-card-full {
@@ -44,8 +44,7 @@ body {
 }
 
 .m-b-25 {
-    margin-bottom: 25px;
-    
+    margin-bottom: 25px
 }
 
 .img-radius {
@@ -60,6 +59,11 @@ h6 {
     line-height: 25px
 }
 
+@media only screen and (min-width: 1400px) {
+    p {
+        font-size: 14px
+    }
+}
 
 .card-block {
     padding: 1.25rem
