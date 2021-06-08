@@ -9,7 +9,7 @@
 .inputstl 
 { 
     padding: 9px; 
-    border: solid 1px #4B718B; 
+    border: solid 1px #afcfe4; 
     outline: 0; 
     background: -webkit(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CDDBE4), to(#FFFFFF)); 
     background: -moz-linear-gradient(top, #FFFFFF, #CDDBE4 1px, #FFFFFF 25px); 
