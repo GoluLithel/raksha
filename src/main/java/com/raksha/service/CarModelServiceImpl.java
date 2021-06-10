@@ -33,6 +33,17 @@ public class CarModelServiceImpl implements CarModelService{
 	public void removeCarModel(int id) {
 		repo.deleteById(id);;
 	}
+
+	@Override
+	public List<CarModel> getModelByBrand(String brand) {
+		return repo.findModelByBrand(brand);
+	}
+
+	@Override
+	public List<CarModel> getVariantFromBrandModel(String brand, String model) {
+		// TODO Auto-generated method stub
+		return repo.findVariantByBrandModel(brand, model);
+	}
 	
 	
 

@@ -13,5 +13,9 @@ public interface CarModelService {
 	List<CarModel> getAllCarModel();
 
 	void removeCarModel(int id);
+	
+	List<CarModel> getModelByBrand(String brand);
+	
+	List<CarModel> getVariantFromBrandModel(String brand, String model);
 
 }

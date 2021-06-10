@@ -12,7 +12,6 @@ public class BikeModel {
 	@Id
 	@GeneratedValue
 	private int id;
-	
 	private String brand;
 	private String model;
 	private int year;
