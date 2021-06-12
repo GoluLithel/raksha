@@ -35,6 +35,11 @@ public class BikeModelServiceImpl implements BikeModelService {
 		repo.deleteById(id);;
 	}
 	
+	@Override
+	public List<BikeModel> getBikeModelByBrand(String bikebrand) {
+		return repo.findModelByBrand(bikebrand);
+	}
+	
 	
 
 }
