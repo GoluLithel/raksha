@@ -34,4 +34,10 @@ public class InsuranceServiceImpl implements InsuranceService {
 		repo.deleteById(id);;
 	}
 
+	@Override
+	public List<Insurance> getInsurancesByUser(int userId) {
+		// TODO Auto-generated method stub
+		return repo.findInsuranceByUser(userId);
+	}
+
 }

@@ -33,6 +33,11 @@ public class InsuranceController {
 		return service.getById(id);
 	}
 	
+	@GetMapping(path = "/insurancesByUser/{uid}", produces = "application/json")
+	public List<Insurance> getInsurancesByUser(@PathVariable("uid") int uid) {
+		return service.getInsurancesByUser(uid);
+	}
+	
 	@GetMapping(path = "/insurances", produces = "application/json")
 	public List<Insurance> getAllInsurance() {
 		return service.getAllInsurance();

@@ -41,7 +41,7 @@ public class MainController {
 	@Autowired
 	private BikeModelService  bikeModelservice;
 	
-	@GetMapping(path = "/getBrands", produces = "application/json")
+	@GetMapping(path = "/getCarBrands", produces = "application/json")
 	public List<String> getBrands(){
 		
 		List<CarModel> carModelList =  carModelservice.getAllCarModel();
@@ -57,7 +57,7 @@ public class MainController {
 		return brandList;
 	}
 	
-	@GetMapping(path = "/getModelFromBrand/{brand}", produces = "application/json")
+	@GetMapping(path = "/getCarModelFromBrand/{brand}", produces = "application/json")
 	public List<String> getModelFromBrand(@PathVariable("brand") String brand){
 		List<CarModel> carModelList =  carModelservice.getModelByBrand(brand);
 		Set<String> modelSet = new TreeSet<String>();
@@ -71,12 +71,15 @@ public class MainController {
 		return modelList;
 	}
 	
-	@GetMapping(path = "/getVariantFromBrandModel/{brand}/{model}", produces = "application/json")
+	@GetMapping(path = "/getCarVariantFromBrandModel/{brand}/{model}", produces = "application/json")
 	public List<String> getVariantFromBrandModel(@PathVariable("brand") String brand, @PathVariable("model") String model){
+		
+		model=model.replace('_', ' ');
+		
 		List<CarModel> carModelList =  carModelservice.getVariantFromBrandModel(brand,model);
 		Set<String> variantSet = new TreeSet<String>();
 		for(int i=0;i<carModelList.size();i++) {
-			variantSet.add(carModelList.get(i).getModel());
+			variantSet.add(carModelList.get(i).getVariant());
 		}
 		
 		List<String> variantList = new ArrayList<String>();

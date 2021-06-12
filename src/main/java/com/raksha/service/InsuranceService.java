@@ -14,4 +14,5 @@ public interface InsuranceService {
 
 	void removeInsurance(int id);
 
+	List<Insurance> getInsurancesByUser(int userId);
 }
