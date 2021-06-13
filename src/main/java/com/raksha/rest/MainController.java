@@ -62,7 +62,7 @@ public class MainController {
 	@GetMapping(path = "/getBikeModelFromBrand/{brand}", produces = "application/json")
 	public List<String> getBikeModelFromBrand(@PathVariable("brand") String bikebrand){
 		
-		//bikebrand=bikebrand.replace('_', ' ');
+		bikebrand=bikebrand.replace('_', ' ');
 		
 		List<BikeModel> bikeModelList =  bikeModelservice.getBikeModelByBrand(bikebrand);
 		Set<String> bikemodelSet = new TreeSet<String>();
