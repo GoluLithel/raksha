@@ -10,7 +10,7 @@ import com.raksha.entity.BikeModel;
 
 public interface BikeModelRepository extends JpaRepository<BikeModel, Integer> {
 	
-	@Query("FROM CarModel WHERE bikebrand=:brnd")
-	public List<BikeModel> findModelByBrand(@Param("brnd")String bikebrand);
+	@Query("FROM BikeModel WHERE brand=:brnd")
+	public List<BikeModel> findModelByBrand(@Param("brnd")String brand);
 
 }
