@@ -61,6 +61,9 @@ public class MainController {
 	
 	@GetMapping(path = "/getBikeModelFromBrand/{brand}", produces = "application/json")
 	public List<String> getBikeModelFromBrand(@PathVariable("brand") String bikebrand){
+		
+		bikebrand=bikebrand.replace('_', ' ');
+		
 		List<BikeModel> bikeModelList =  bikeModelservice.getBikeModelByBrand(bikebrand);
 		Set<String> bikemodelSet = new TreeSet<String>();
 		for(int i=0;i<bikeModelList.size();i++) {
@@ -93,6 +96,9 @@ public class MainController {
 	
 	@GetMapping(path = "/getCarModelFromBrand/{brand}", produces = "application/json")
 	public List<String> getModelFromBrand(@PathVariable("brand") String brand){
+		
+		brand=brand.replace('_', ' ');
+		
 		List<CarModel> carModelList =  carModelservice.getModelByBrand(brand);
 		Set<String> modelSet = new TreeSet<String>();
 		for(int i=0;i<carModelList.size();i++) {
