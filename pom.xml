@@ -8,10 +8,10 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.udaan</groupId>
-	<artifactId>udaan</artifactId>
+	<groupId>com.raksha</groupId>
+	<artifactId>raksha</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>udaan</name>
+	<name>raksha</name>
 	<description>Udaan project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -25,7 +25,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

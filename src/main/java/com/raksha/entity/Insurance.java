@@ -14,6 +14,8 @@ public class Insurance {
 	@GeneratedValue
 	private int id;
 	
+	private int userId;
+	
 	private String type;
 	
 	private String plan;
@@ -26,6 +28,14 @@ public class Insurance {
 	private String vehicle_no;
 
 	
+	public int getUser_id() {
+		return userId;
+	}
+
+	public void setUser_id(int user_id) {
+		this.userId = user_id;
+	}
+
 	public String getVehicleType() {
 		return vehicleType;
 	}
