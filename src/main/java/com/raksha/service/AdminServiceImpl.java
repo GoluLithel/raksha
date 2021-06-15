@@ -5,33 +5,34 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.raksha.entity.User;
-import com.raksha.repo.UserRepository;
+import com.raksha.entity.Admin;
+import com.raksha.repo.AdminRepository;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
-	private UserRepository repo;
+	private AdminRepository repo;
 	
 	@Override
-	public void addUser(User user) {
-		repo.save(user);
+	public void addAdmin(Admin admin) {
+		repo.save(admin);
 	}
 
 	@Override
-	public User getById(int id) {
+	public Admin getById(int id) {
 		return repo.findById(id).get();
 	}
 
 	@Override
-	public List<User> getAllUser() {
+	public List<Admin> getAllAdmin() {
 		return repo.findAll();
 	}
 
 	@Override
-	public void removeUser(int id) {
+	public void removeAdmin(int id) {
 		repo.deleteById(id);
 	}
+
 
 }
