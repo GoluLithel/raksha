@@ -40,4 +40,16 @@ public class InsuranceServiceImpl implements InsuranceService {
 		return repo.findInsuranceByUser(userId);
 	}
 
+	@Override
+	public long getThirdPartyCount() {
+		// TODO Auto-generated method stub
+		return repo.getInsuranceTypeCount("Third Party");
+	}
+
+	@Override
+	public long getCoprehensiveCount() {
+		// TODO Auto-generated method stub
+		return repo.getInsuranceTypeCount("Comprehensive");
+	}
+
 }

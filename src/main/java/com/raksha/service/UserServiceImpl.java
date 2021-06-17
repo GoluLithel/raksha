@@ -33,5 +33,16 @@ public class UserServiceImpl implements UserService {
 	public void removeUser(int id) {
 		repo.deleteById(id);
 	}
+//	@Override
+//	public long getThirdPartyCount() {
+//		// TODO Auto-generated method stub
+//		return repo.getInsuranceTypeCount("Third Party");
+//	}
+	
+	@Override
+	public long getUserCount(int id) {
+		// TODO Auto-generated method stub
+		return repo.findById(id).get().getId();
+	}
 
 }
