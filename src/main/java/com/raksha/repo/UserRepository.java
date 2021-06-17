@@ -8,8 +8,8 @@ import com.raksha.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	 @Query("SELECT COUNT(u) FROM User u WHERE u.id=:id")
-	 public long getUserCount(@Param("id")int id);
+	 @Query("SELECT COUNT(u) FROM User u")
+	 public long getUserCount();
 
 
 }

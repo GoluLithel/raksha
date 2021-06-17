@@ -26,7 +26,7 @@ public class AdminPanelDetailServiceImple implements AdminPanelDetailService {
 		AdminPanelDetailsResponse response = new AdminPanelDetailsResponse();
 		response.setVisitorCount(visitorService.getCount());
 		response.setThirdPartyCount(insuranseService.getThirdPartyCount());
-		//response.setUserCount(userService.getUserCount());//
+		response.setUserCount(userService.getUserCount());//
 		response.setComprehensiveCount(insuranseService.getCoprehensiveCount());
 		return response;
 	}

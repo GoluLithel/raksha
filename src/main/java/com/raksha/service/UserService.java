@@ -14,5 +14,5 @@ public interface UserService {
 	
 	void removeUser(int id);
 	
-	public long getUserCount(int id);
+	public long getUserCount();
 }
