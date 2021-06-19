@@ -11,7 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.raksha.entity.OTPResponse;
+import com.raksha.response.OTPResponse;
 import com.sun.mail.smtp.SMTPAddressFailedException;
 
 public class Mail {

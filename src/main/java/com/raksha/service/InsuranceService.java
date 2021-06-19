@@ -15,4 +15,8 @@ public interface InsuranceService {
 	void removeInsurance(int id);
 
 	List<Insurance> getInsurancesByUser(int userId);
+	
+	long getThirdPartyCount();
+	
+	long getCoprehensiveCount();
 }

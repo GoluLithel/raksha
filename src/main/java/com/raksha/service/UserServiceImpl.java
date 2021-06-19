@@ -31,7 +31,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void removeUser(int id) {
-		repo.deleteById(id);;
+		repo.deleteById(id);
+	}
+
+	
+	@Override
+	public long getUserCount() {
+		// TODO Auto-generated method stub
+		return repo.getUserCount();
 	}
 
 	@Override

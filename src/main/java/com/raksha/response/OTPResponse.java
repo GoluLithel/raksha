@@ -1,4 +1,4 @@
-package com.raksha.entity;
+package com.raksha.response;
 
 public class OTPResponse {
 	
