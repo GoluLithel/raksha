@@ -34,4 +34,10 @@ public class UserServiceImpl implements UserService {
 		repo.deleteById(id);;
 	}
 
+	@Override
+	public void updateUser(User user) {
+
+		
+	}
+
 }

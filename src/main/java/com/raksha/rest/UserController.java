@@ -41,4 +41,9 @@ public class UserController {
 	public void deleteUser(@PathVariable("id") int id) {
 		service.removeUser(id);
 	}
+	
+//	@PostMapping(value = "/update")
+//	public void updateUser(@PathVariable("id") int id) {
+//		service.removeUser(id);
+//	}
 }
