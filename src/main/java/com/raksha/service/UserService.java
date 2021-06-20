@@ -6,7 +6,7 @@ import com.raksha.entity.User;
 
 public interface UserService {
 
-	void addUser(User user);
+	int addUser(User user);
 	
 	User getById(int id);
 	

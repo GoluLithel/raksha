@@ -52,4 +52,16 @@ public class InsuranceServiceImpl implements InsuranceService {
 		return repo.getInsuranceTypeCount("Comprehensive");
 	}
 
+	@Override
+	public long getBikeInsuraceCount() {
+		// TODO Auto-generated method stub
+		return repo.getInsuranceVehicleTypeCount("Bike");
+	}
+
+	@Override
+	public long getCarInsuranceCount() {
+		// TODO Auto-generated method stub
+		return repo.getInsuranceVehicleTypeCount("Bike");
+	}
+
 }

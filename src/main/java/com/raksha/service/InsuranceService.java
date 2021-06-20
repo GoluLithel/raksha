@@ -19,4 +19,8 @@ public interface InsuranceService {
 	long getThirdPartyCount();
 	
 	long getCoprehensiveCount();
+	
+	long getBikeInsuraceCount();
+	
+	long getCarInsuranceCount();
 }

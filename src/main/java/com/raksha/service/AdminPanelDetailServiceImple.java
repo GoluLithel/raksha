@@ -28,6 +28,8 @@ public class AdminPanelDetailServiceImple implements AdminPanelDetailService {
 		response.setThirdPartyCount(insuranseService.getThirdPartyCount());
 		response.setUserCount(userService.getUserCount());//
 		response.setComprehensiveCount(insuranseService.getCoprehensiveCount());
+		response.setBikeInsuranceCount(insuranseService.getBikeInsuraceCount());
+		response.setCarInsuranceCount(insuranseService.getCarInsuranceCount());
 		return response;
 	}
 

@@ -23,8 +23,8 @@ public class UserController {
 	private UserService service;
 	
 	@PostMapping(path = "/add", consumes = "application/json")
-	public void addUser(@RequestBody User user) {
-		service.addUser(user);
+	public int addUser(@RequestBody User user) {
+		return service.addUser(user);
 	}
 	
 	@GetMapping(path = "/user/{id}", produces = "application/json")
