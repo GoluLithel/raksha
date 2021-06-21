@@ -14,17 +14,18 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.raksha.entity.Insurance;
-import com.raksha.entity.User;
-import com.raksha.utility.PDFTemplate;
 
 @Service
 public class PDFDownloadServiceImple implements PDFDownloadService {
+	
+	@Autowired
+	PDFTemplateService service;
 
 	@Override
-	public String getPDFDownloadURL() {
+	public String getPDFDownloadURL(int policyNumber) {
 		
 		// TODO Auto-generated method stub
 		HttpClient httpClient = HttpClientBuilder.create().build();
@@ -32,7 +33,7 @@ public class PDFDownloadServiceImple implements PDFDownloadService {
 		request.addHeader("Authorization", API_KEY);
 
 		try {
-			request.setEntity(new StringEntity("{\"html\":\""+PDFTemplate.getHTMLInString("1")+"\"}"));
+			request.setEntity(new StringEntity("{\"html\":\""+service.getHTMLInString(policyNumber)+"\"}"));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

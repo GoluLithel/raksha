@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.raksha.entity.Insurance;
 import com.raksha.repo.InsuranceRepository;
+import com.raksha.response.InsurancesPlanResponse;
 
 @Service
 public class InsuranceServiceImpl implements InsuranceService {
@@ -62,6 +63,13 @@ public class InsuranceServiceImpl implements InsuranceService {
 	public long getCarInsuranceCount() {
 		// TODO Auto-generated method stub
 		return repo.getInsuranceVehicleTypeCount("Bike");
+	}
+
+	@Override
+	public InsurancesPlanResponse getInsurancesPlanResponse(String vehicleType, int id) {
+		// TODO Auto-generated method stub
+		InsurancesPlanResponse res = new InsurancesPlanResponse();
+		return res;
 	}
 
 }

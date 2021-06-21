@@ -1,15 +1,18 @@
-package com.raksha.utility;
+package com.raksha.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.raksha.response.ViewInsuranceResponce;
-import com.raksha.service.ViewInsuranceService;
-import com.raksha.service.ViewInsuranceServiceImple;
 
-public class PDFTemplate {
+@Service
+public class PDFTemplateService {
 	
-	public static String getHTMLInString(int policyNumber) {
-		
-		ViewInsuranceService service = new ViewInsuranceServiceImple();
-		
+	@Autowired
+	ViewInsuranceService service;
+
+	public String getHTMLInString(int policyNumber) {
+				
 		ViewInsuranceResponce res = service.getInsuranceView(policyNumber);
 		
 		String html ="<html>"
@@ -44,8 +47,8 @@ public class PDFTemplate {
 				+"					<th>Policy Number</th>"
 				+"				</tr>"
 				+"				<tr>"
-				+"					<td>joey s tribbiani</td>"
-				+"					<td>12309876454</td>"
+				+"					<td>"+res.getUserFname()+" "+res.getUserMname()+" "+res.getUserLname()+"</td>"
+				+"					<td>"+res.getPolicyNumber()+"</td>"
 				+"				</tr><br>"
 				+"				<tr>"
 				+"					<td>.</td>"
@@ -56,8 +59,8 @@ public class PDFTemplate {
 				+"					<th>Phone Number</th>"
 				+"				</tr>"
 				+"				<tr>"
-				+"					<td>joey@gamil.com</td>"
-				+"					<td>1234567890</td>"
+				+"					<td>"+res.getUserEmail()+"</td>"
+				+"					<td>"+res.getUserPhone()+"</td>"
 				+"				</tr><br>"
 				+"				<tr>"
 				+"					<td>.</td>"
@@ -68,8 +71,8 @@ public class PDFTemplate {
 				+"					<th>Photo ID Number</th>"
 				+"				</tr>"
 				+"				<tr>"
-				+"					<td>Adhar</td>"
-				+"					<td>1234567890</td>"
+				+"					<td>"+res.getUserPhotoIdType()+"</td>"
+				+"					<td>"+res.getUserPhotoIdNumber()+"</td>"
 				+"				</tr><br>"
 				+"				<tr>"
 				+"					<td>.</td>"
@@ -80,8 +83,8 @@ public class PDFTemplate {
 				+"					<th>Vehicle Registraion Number</th>"
 				+"				</tr>"
 				+"				<tr>"
-				+"					<td>bike</td>"
-				+"					<td>MH-90-A-1234</td>"
+				+"					<td>"+res.getVehicleType()+"</td>"
+				+"					<td>"+res.getVehicleRegistrationNumber()+"</td>"
 				+"				</tr><br>"
 				+"				<tr>"
 				+"					<td>.</td>"
@@ -92,8 +95,8 @@ public class PDFTemplate {
 				+"					<th>Vehicle Model</th>"
 				+"				</tr>"
 				+"				<tr>"
-				+"					<td>honda</td>"
-				+"					<td>activa 5g</td>"
+				+"					<td>"+res.getVehicleBrand()+"</td>"
+				+"					<td>"+res.getVehicleModel()+"</td>"
 				+"				</tr><br>"
 				+"				<tr>"
 				+"					<td>.</td>"
@@ -104,8 +107,8 @@ public class PDFTemplate {
 				+"					<th>Duration Insured</th>"
 				+"				</tr>"
 				+"				<tr>"
-				+"					<td>Third-party</td>"
-				+"					<td>2 years</td>"
+				+"					<td>"+res.getInsuranceType()+"</td>"
+				+"					<td>"+res.getInsuranceDuration()+"</td>"
 				+"				</tr><br>"
 				+"				<tr>"
 				+"					<td>.</td>"
@@ -116,8 +119,8 @@ public class PDFTemplate {
 				+"					<th>Insurance End Date</th>"
 				+"				</tr>"				
 				+"				<tr>"
-				+"					<td>20-07-2020</td>"
-				+"					<td>20-07-2022</td>"
+				+"					<td>"+res.getInsuranceStartDate()+"</td>"
+				+"					<td>"+res.getInsuranceEndDate()+"</td>"
 				+"				</tr><br>"
 				+"				<tr>"
 				+"					<td>.</td>"
@@ -128,8 +131,8 @@ public class PDFTemplate {
 				+"					<th>Maximum Amount insured</th>"
 				+"				</tr>"
 				+"				<tr>"
-				+"					<td>1000</td>"
-				+"					<td>50000 </td>"
+				+"					<td>"+res.getInsurancePremiumPaid()+"</td>"
+				+"					<td>"+res.getMaxAmountInsured()+"</td>"
 				+"				</tr>"
 				+"				<tr>"
 				+"					<td>.</td>"

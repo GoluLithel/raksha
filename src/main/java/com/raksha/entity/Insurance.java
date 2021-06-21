@@ -27,7 +27,9 @@ public class Insurance {
 	
 	private String vehicle_no;
 	
-	private String startDate; 
+	private String startDate;
+	
+	private String endDate; 
 
 	
 	public int getUser_id() {
@@ -100,6 +102,14 @@ public class Insurance {
 
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 
 }

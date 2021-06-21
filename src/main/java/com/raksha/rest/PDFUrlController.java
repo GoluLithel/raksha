@@ -17,9 +17,9 @@ public class PDFUrlController {
 	private PDFDownloadService service;
 
 	@GetMapping(path = "/getDownloadUrl/{id}", produces = "application/json")
-	public DownloadUrl getPDFDownloadURL(@PathVariable("id") String vehicleID) {
+	public DownloadUrl getPDFDownloadURL(@PathVariable("id") int vehicleID) {
 		DownloadUrl downloadUrl=new DownloadUrl(); 
-		downloadUrl.setUrl(service.getPDFDownloadURL());
+		downloadUrl.setUrl(service.getPDFDownloadURL(vehicleID));
 		return downloadUrl;
 	}
 	
