@@ -16,6 +16,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
+import com.raksha.entity.Insurance;
+import com.raksha.entity.User;
+import com.raksha.utility.PDFTemplate;
+
 @Service
 public class PDFDownloadServiceImple implements PDFDownloadService {
 
@@ -24,15 +28,11 @@ public class PDFDownloadServiceImple implements PDFDownloadService {
 		
 		// TODO Auto-generated method stub
 		HttpClient httpClient = HttpClientBuilder.create().build();
-		HttpPost request = new HttpPost("https://v2018.api2pdf.com/chrome/html");
-//		request.addHeader("Content-Type", "application/json");
-//		request.addHeader("Accept","application/json");
-		String API_KEY = "4b213d69-78c0-4472-9578-5a305f7c6306";
-//		String basicAuth = "Basic"  + new String(Base64.encode(API_KEY.getBytes(), Base64.DEFAULT));
+		HttpPost request = new HttpPost(API_URL);
 		request.addHeader("Authorization", API_KEY);
 
 		try {
-			request.setEntity(new StringEntity("{\"html\":\"<h1>Hello World</h1>\"}"));
+			request.setEntity(new StringEntity("{\"html\":\""+PDFTemplate.getHTMLInString("1")+"\"}"));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,7 +52,9 @@ public class PDFDownloadServiceImple implements PDFDownloadService {
 			JSONObject json;
 			try {
 				json = (JSONObject) parser.parse(builder.toString());
-				return json.get("pdf").toString();
+				String url = json.get("pdf").toString();
+				url = url.replace(": ", ":");
+				return url;
 				
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
@@ -62,6 +64,7 @@ public class PDFDownloadServiceImple implements PDFDownloadService {
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

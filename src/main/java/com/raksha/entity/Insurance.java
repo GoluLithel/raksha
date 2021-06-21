@@ -26,6 +26,8 @@ public class Insurance {
 	private String vehicleType;
 	
 	private String vehicle_no;
+	
+	private String startDate; 
 
 	
 	public int getUser_id() {
@@ -83,5 +85,21 @@ public class Insurance {
 	public void setFee(double fee) {
 		this.fee = fee;
 	}
-	
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
 }

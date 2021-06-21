@@ -169,10 +169,10 @@ public class MainController {
 		HashMap<String, String> map = new HashMap<>();
 		if(car != null) {
 			map.put("vehicleType","Car");
-			map.put("modelTypeId",car.getCarModel()+"");
+			map.put("modelTypeId",car.getVehicleModel()+"");
 		}else if( bike != null) {
 			map.put("vehicleType","Bike");
-			map.put("modelTypeId",bike.getBikeModel()+"");
+			map.put("modelTypeId",bike.getVehicleModel()+"");
 		}else {
 			map.put("vehicleType","Not Found");
 			map.put("modelType","Not Applicable");

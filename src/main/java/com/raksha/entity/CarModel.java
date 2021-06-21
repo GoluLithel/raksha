@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "car_model")
-public class CarModel {
+public class CarModel implements VehicleModel {
 	
 	@Id
 	@GeneratedValue
