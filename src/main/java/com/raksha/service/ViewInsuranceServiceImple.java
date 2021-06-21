@@ -58,14 +58,22 @@ public class ViewInsuranceServiceImple implements ViewInsuranceService {
 		res.setUserPhone(user.getMobileNo());
 		res.setUserPhotoIdType(user.getPhotoIdType());
 		res.setUserPhotoIdNumber(user.getPhotoId());
-		res.setVehicleType(vehicle.getClass().toString());
+		
+		if(vehicle.getClass().toString().equals("class com.raksha.entity.Bike")) {
+			res.setVehicleType("Bike");
+		}else {
+			res.setVehicleType("Car");
+		}
+		
 		res.setVehicleRegistrationNumber(vehicle.getRegistrationNo());
 		res.setVehicleBrand(vehicleModel.getBrand());
 		res.setVehicleModel(vehicleModel.getModel());
 		res.setInsuranceType(insurance.getType());
 		res.setInsuranceDuration(insurance.getPlan());
 		res.setInsuranceStartDate(insurance.getStartDate());
+		
 		res.setInsuranceEndDate(insurance.getStartDate()); ////NEED TO BE FIX
+		
 		res.setInsurancePremiumPaid(""+insurance.getFee());
 		res.setMaxAmountInsured(""+(insurance.getFee()*50));
 		
