@@ -88,12 +88,12 @@ public class InsuranceServiceImpl implements InsuranceService {
 			vehicleModel = carRepo.getById(id);
 		}
 		
-		res.setCompreYear1(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "1 Year", "Comprehensive"));
-		res.setCompreYear2(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "2 Year", "Comprehensive"));
-		res.setCompreYear3(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "3 Year", "Comprehensive"));
-		res.setThirdYear1(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "1 Year", "Third Party"));
-		res.setThirdYear2(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "2 Year", "Third Party"));
-		res.setThirdYear3(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "3 Year", "Third Party"));
+		res.setCompreYear1((int)Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "1 Year", "Comprehensive"));
+		res.setCompreYear2((int)Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "2 Year", "Comprehensive"));
+		res.setCompreYear3((int)Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "3 Year", "Comprehensive"));
+		res.setThirdYear1((int)Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "1 Year", "Third Party"));
+		res.setThirdYear2((int)Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "2 Year", "Third Party"));
+		res.setThirdYear3((int)Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "3 Year", "Third Party"));
 		return res;
 	}
 
