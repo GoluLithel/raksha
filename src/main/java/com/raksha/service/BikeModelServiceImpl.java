@@ -39,6 +39,11 @@ public class BikeModelServiceImpl implements BikeModelService {
 	public List<BikeModel> getBikeModelByBrand(String bikebrand) {
 		return repo.findModelByBrand(bikebrand);
 	}
+
+	@Override
+	public int getIdByDetails(String brand, String model, int year) {
+		return repo.findIdByDetails(brand, model, year);
+	}
 	
 	
 

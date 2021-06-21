@@ -58,13 +58,11 @@ public class ViewInsuranceServiceImple implements ViewInsuranceService {
 		res.setUserPhone(user.getMobileNo());
 		res.setUserPhotoIdType(user.getPhotoIdType());
 		res.setUserPhotoIdNumber(user.getPhotoId());
-		
 		if(vehicle.getClass().toString().equals("class com.raksha.entity.Bike")) {
 			res.setVehicleType("Bike");
 		}else {
 			res.setVehicleType("Car");
 		}
-		
 		res.setVehicleRegistrationNumber(vehicle.getRegistrationNo());
 		res.setVehicleBrand(vehicleModel.getBrand());
 		res.setVehicleModel(vehicleModel.getModel());

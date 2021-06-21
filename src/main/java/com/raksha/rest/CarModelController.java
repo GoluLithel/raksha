@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raksha.entity.CarModel;
+import com.raksha.request.CarModelRequest;
 import com.raksha.service.CarModelService;
 
 
@@ -31,6 +32,11 @@ public class CarModelController {
 	@GetMapping(path = "/carmodel/{id}", produces = "application/json")
 	public CarModel getCarModel(@PathVariable("id") int id) {
 		return service.getById(id);
+	}
+	
+	@PostMapping(path = "/getCarId", consumes = "application/json", produces = "application/json")
+	public int getIdByDetails(@RequestBody CarModelRequest carModelReq) {
+		return service.getIdByDetails(carModelReq);
 	}
 	
 	@GetMapping(path = "/carmodels", produces = "application/json")

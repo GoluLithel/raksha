@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.raksha.entity.CarModel;
 import com.raksha.repo.CarModelRepository;
+import com.raksha.request.CarModelRequest;
 
 @Service
 public class CarModelServiceImpl implements CarModelService{
@@ -43,6 +44,16 @@ public class CarModelServiceImpl implements CarModelService{
 	public List<CarModel> getVariantFromBrandModel(String brand, String model) {
 		// TODO Auto-generated method stub
 		return repo.findVariantByBrandModel(brand, model);
+	}
+
+	@Override
+	public int getIdByDetails(CarModelRequest carModelReq) {
+		// TODO Auto-generated method stub
+		return repo.findIdByDetails(carModelReq.getBrand(),
+				carModelReq.getModel(),
+				carModelReq.getVariant(),
+				carModelReq.getFuelType(),
+				carModelReq.getYear());
 	}
 	
 	

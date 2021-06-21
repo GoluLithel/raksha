@@ -16,4 +16,7 @@ public interface CarModelRepository extends JpaRepository<CarModel, Integer> {
 	@Query("FROM CarModel WHERE brand=:brnd AND model=:mdl")
 	public List<CarModel> findVariantByBrandModel(@Param("brnd")String brand, @Param("mdl")String model);
 
+	@Query("Select cm.id FROM CarModel cm WHERE brand=:brnd AND model=:mdl AND variant=:var AND fuelType=:ft AND year=:yr")
+	public int findIdByDetails(@Param("brnd")String brand, @Param("mdl")String model, @Param("var")String variant, @Param("ft")String fuelType, @Param("yr")int year);
+	
 }
