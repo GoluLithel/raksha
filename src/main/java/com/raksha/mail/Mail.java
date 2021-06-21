@@ -87,7 +87,7 @@ public class Mail {
 			message.setSubject("OTP: Do Not Replay");
 
 			// Now set the actual message
-			message.setText("One Time Password:\n\n\n\t\t"+OTP);
+			message.setText("One Time Password: "+OTP);
 
 			// Send message
 			Transport.send(message);

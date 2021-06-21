@@ -5,15 +5,26 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.raksha.entity.BikeModel;
 import com.raksha.entity.Insurance;
+import com.raksha.entity.VehicleModel;
+import com.raksha.repo.BikeModelRepository;
+import com.raksha.repo.CarModelRepository;
 import com.raksha.repo.InsuranceRepository;
 import com.raksha.response.InsurancesPlanResponse;
+import com.raksha.utility.Utility;
 
 @Service
 public class InsuranceServiceImpl implements InsuranceService {
 	
 	@Autowired
 	private InsuranceRepository repo;
+	
+	@Autowired
+	private CarModelRepository carRepo;
+	
+	@Autowired
+	private BikeModelRepository bikeRepo;
 	
 	@Override
 	public void addInsurance(Insurance insurance) {
@@ -69,6 +80,19 @@ public class InsuranceServiceImpl implements InsuranceService {
 	public InsurancesPlanResponse getInsurancesPlanResponse(String vehicleType, int id) {
 		// TODO Auto-generated method stub
 		InsurancesPlanResponse res = new InsurancesPlanResponse();
+		VehicleModel vehicleModel = null;
+		if(vehicleType.equalsIgnoreCase("bike")) {
+			vehicleModel = bikeRepo.getById(id);
+		}else {
+			vehicleModel = carRepo.getById(id);
+		}
+		
+		res.setCompreYear1(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "1 Year", "Comprehensive"));
+		res.setCompreYear2(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "2 Year", "Comprehensive"));
+		res.setCompreYear3(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "3 Year", "Comprehensive"));
+		res.setThirdYear1(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "1 Year", "Third Party"));
+		res.setThirdYear2(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "2 Year", "Third Party"));
+		res.setThirdYear3(Utility.calculateInsurancefee(vehicleModel.getYear(), vehicleModel.getPrice(), "3 Year", "Third Party"));
 		return res;
 	}
 
