@@ -27,8 +27,9 @@ public class InsuranceServiceImpl implements InsuranceService {
 	private BikeModelRepository bikeRepo;
 	
 	@Override
-	public void addInsurance(Insurance insurance) {
+	public int addInsurance(Insurance insurance) {
 		repo.save(insurance);
+		return insurance.getId();
 	}
 
 	@Override

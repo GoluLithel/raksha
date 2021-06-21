@@ -7,7 +7,7 @@ import com.raksha.response.InsurancesPlanResponse;
 
 public interface InsuranceService {
 
-	void addInsurance(Insurance insurance);
+	int addInsurance(Insurance insurance);
 
 	Insurance getById(int id);
 

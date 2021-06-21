@@ -25,8 +25,8 @@ public class InsuranceController {
 	private InsuranceService service;
 	
 	@PostMapping(path = "/addinsurance", consumes = "application/json")
-	public void addInsurance(@RequestBody Insurance insurance) {
-		service.addInsurance(insurance);
+	public int addInsurance(@RequestBody Insurance insurance) {
+		return service.addInsurance(insurance);
 	}
 	
 	@GetMapping(path = "/insurance/{id}", produces = "application/json")
