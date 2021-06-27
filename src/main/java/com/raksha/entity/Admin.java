@@ -23,12 +23,13 @@ public class Admin {
 	@Column(length = 20)
 	private String lname;
 	
+	@Column(unique=true) 
 	private String gmail;
 	
-	@Column(name="mobile_no")
+	@Column(name="mobile_no", unique=true)
 	private String mobileNo;
 	
-	@Column(length = 10)
+	@Column(unique=true)
 	private String password;
 
 	public int getId() {

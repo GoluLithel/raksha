@@ -3,6 +3,7 @@ package com.raksha.service;
 import java.util.List;
 
 import com.raksha.entity.User;
+import com.raksha.response.OTPResponse;
 
 public interface UserService {
 
@@ -17,4 +18,6 @@ public interface UserService {
 	void updateUser(User user);
 
 	public long getUserCount();
+
+	OTPResponse verifyMail(String mail);
 }

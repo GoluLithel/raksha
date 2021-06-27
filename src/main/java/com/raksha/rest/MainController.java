@@ -21,6 +21,8 @@ import com.raksha.entity.Car;
 import com.raksha.entity.CarModel;
 import com.raksha.entity.UserLogin;
 import com.raksha.mail.Mail;
+import com.raksha.repo.AdminRepository;
+import com.raksha.repo.UserRepository;
 import com.raksha.response.OTPResponse;
 import com.raksha.service.BikeModelService;
 import com.raksha.service.BikeService;
@@ -47,6 +49,12 @@ public class MainController {
 	@Autowired
 	private BikeModelService  bikeModelservice;
 	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private AdminRepository adminRepo;
+	
 	
 //	@GetMapping(path = "/getOTP", produces = "application/json")
 //	public List<String> getMessage(){
@@ -59,7 +67,60 @@ public class MainController {
 	
 	@PostMapping(path = "/getOTP", consumes = "application/json")
 	public OTPResponse getOTP(@RequestBody UserLogin userLogin) {
-		return Mail.sendOTP(userLogin.getEmailId());
+		OTPResponse otpResponse  = new OTPResponse();
+		if(userLogin.getUserType().equals("Admin")) {
+			if(userLogin.getEmailId().equals("")) {
+				if(adminRepo.mobileCount(userLogin.getMobileNo())>=1) {
+					String email = adminRepo.getEmail(userLogin.getMobileNo());
+					String password = adminRepo.getPassword(email);
+					if(userLogin.getPassword().equals(password)) {
+						return Mail.sendOTP(email);
+					}else {
+						otpResponse.setOTP("NO OTP");
+						otpResponse.setStatus("INVALID PASSWORD");
+						return otpResponse;
+					}
+				}else {
+					otpResponse.setOTP("NO OTP");
+					otpResponse.setStatus("INVALID MOBILE NO");
+					return otpResponse;
+				}
+			}else {
+				if(adminRepo.emailCount(userLogin.getEmailId())>=1) {
+					String password = adminRepo.getPassword(userLogin.getEmailId());
+					if(userLogin.getPassword().equals(password)) {
+						return Mail.sendOTP(userLogin.getEmailId());
+					}else {
+						otpResponse.setOTP("NO OTP");
+						otpResponse.setStatus("INVALID PASSWORD");
+						return otpResponse;
+					}
+				}else {
+					otpResponse.setOTP("NO OTP");
+					otpResponse.setStatus("INVALID MAIL ADDRESS");
+					return otpResponse;
+				}
+			}
+		}else {
+			if(userLogin.getEmailId().equals("")) {
+				if(userRepo.mobileCount(userLogin.getMobileNo())>=1) {
+					String email = userRepo.getEmail(userLogin.getMobileNo());
+					return Mail.sendOTP(email);
+				}else {
+					otpResponse.setOTP("NO OTP");
+					otpResponse.setStatus("INVALID MOBILE NO");
+					return otpResponse;
+				}
+			}else {
+				if(userRepo.emailCount(userLogin.getEmailId())>=1) {
+					return Mail.sendOTP(userLogin.getEmailId());
+				}else {
+					otpResponse.setOTP("NO OTP");
+					otpResponse.setStatus("INVALID MAIL ADDRESS");
+					return otpResponse;
+				}
+			}
+		}
 	}
 	
 	
@@ -179,6 +240,11 @@ public class MainController {
 		}
 
 		return map;
+	}
+	
+	@GetMapping(path = "/sendMail/{uid}/{iid}", produces = "application/json")
+	public void sendMail(@PathVariable("id") String id) {
+		
 	}
 
 }

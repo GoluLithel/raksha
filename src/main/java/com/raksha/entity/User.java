@@ -23,9 +23,10 @@ public class User {
 	@Column(length = 20)
 	private String lname;
 	
+	@Column(unique=true) 
 	private String gmail;
 	
-	@Column(name="mobile_no")
+	@Column(name="mobile_no", unique=true)
 	private String mobileNo;
 	
 	@Column(name="photo_id_type")

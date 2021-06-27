@@ -2,7 +2,6 @@ package com.raksha.rest;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raksha.entity.User;
+import com.raksha.response.OTPResponse;
 import com.raksha.service.UserService;
 
 @RestController
@@ -35,6 +35,11 @@ public class UserController {
 	@GetMapping(path = "/users", produces = "application/json")
 	public List<User> getAllUser() {
 		return service.getAllUser();
+	}
+	
+	@GetMapping(path = "/verifyMail/{mail}", produces = "application/json")
+	public OTPResponse verifyMail(@PathVariable("mail") String mail) {
+		return service.verifyMail(mail);
 	}
 	
 	@DeleteMapping(value = "/del/{id}")
