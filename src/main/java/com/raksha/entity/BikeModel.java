@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "bike_model")
-public class BikeModel {
+public class BikeModel implements VehicleModel{
 	
 	@Id
 	@GeneratedValue

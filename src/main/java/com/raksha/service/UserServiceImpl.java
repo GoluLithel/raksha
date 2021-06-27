@@ -15,8 +15,9 @@ public class UserServiceImpl implements UserService {
 	private UserRepository repo;
 	
 	@Override
-	public void addUser(User user) {
+	public int addUser(User user) {
 		repo.save(user);
+		return user.getId();
 	}
 
 	@Override
@@ -31,7 +32,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void removeUser(int id) {
-		repo.deleteById(id);;
+		repo.deleteById(id);
+	}
+
+	
+	@Override
+	public long getUserCount() {
+		// TODO Auto-generated method stub
+		return repo.getUserCount();
+	}
+
+	@Override
+	public void updateUser(User user) {
+
+		
 	}
 
 }

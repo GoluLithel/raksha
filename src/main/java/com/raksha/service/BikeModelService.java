@@ -15,5 +15,6 @@ public interface BikeModelService {
 	void removeBikeModel(int id);
 	
 	List<BikeModel> getBikeModelByBrand(String bikebrand);
-
+	
+	int getIdByDetails(String brand,String model, int year);
 }

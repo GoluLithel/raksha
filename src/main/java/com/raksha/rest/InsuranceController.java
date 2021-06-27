@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raksha.entity.Insurance;
+import com.raksha.response.InsurancesPlanResponse;
 import com.raksha.service.InsuranceService;
 
 
@@ -24,8 +25,8 @@ public class InsuranceController {
 	private InsuranceService service;
 	
 	@PostMapping(path = "/addinsurance", consumes = "application/json")
-	public void addInsurance(@RequestBody Insurance insurance) {
-		service.addInsurance(insurance);
+	public int addInsurance(@RequestBody Insurance insurance) {
+		return service.addInsurance(insurance);
 	}
 	
 	@GetMapping(path = "/insurance/{id}", produces = "application/json")
@@ -41,6 +42,11 @@ public class InsuranceController {
 	@GetMapping(path = "/insurances", produces = "application/json")
 	public List<Insurance> getAllInsurance() {
 		return service.getAllInsurance();
+	}
+	
+	@GetMapping(path = "/getPlanes/{vehicleType}/{id}", produces = "application/json")
+	public InsurancesPlanResponse getInsurancePlanes(@PathVariable("vehicleType") String vehicleType, @PathVariable("id") int id) {
+		return service.getInsurancesPlanResponse(vehicleType, id);
 	}
 	
 	@DeleteMapping(value = "/delinsurance/{id}")

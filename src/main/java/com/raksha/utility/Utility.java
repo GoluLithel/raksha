@@ -6,7 +6,7 @@ public class Utility {
 	static public double calculateInsurancefee(int year, double price, String plan, String type) {
 
 		int currentyear = Calendar.getInstance().get(Calendar.YEAR);
-		int remainingyear=currentyear-year;
+		int remainingyear = currentyear-year;
 		double depriciatedprice = 0,typeprice=0,insuranceprice = 0,planprice,discount;
 		double tempprice=price;
 		if(remainingyear<=15) {
@@ -15,11 +15,12 @@ public class Utility {
 				depriciatedprice=0.1*tempprice;
 				tempprice=tempprice-depriciatedprice;
 			}
+			
 			if(type.equalsIgnoreCase("Third Party")) {
 				tempprice=0.02*depriciatedprice;
 				typeprice=depriciatedprice+tempprice;		
 			}
-			else if(type.equalsIgnoreCase("comprehensive")) {
+			else if(type.equalsIgnoreCase("Comprehensive")) {
 				tempprice=0.035*depriciatedprice;
 				typeprice=depriciatedprice+tempprice;
 			}

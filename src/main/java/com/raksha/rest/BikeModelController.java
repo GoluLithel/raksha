@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raksha.entity.BikeModel;
+import com.raksha.request.BikeModelRequest;
 import com.raksha.service.BikeModelService;
 
 
@@ -32,6 +33,11 @@ public class BikeModelController {
 		return service.getById(id);
 	}
 	
+	@PostMapping(path = "/getBikeId", consumes = "application/json", produces = "application/json")
+	public int getIdByDetails(@RequestBody BikeModelRequest bikeModelReq) {
+		return service.getIdByDetails(bikeModelReq.getBrand(), bikeModelReq.getModel(), bikeModelReq.getYear());
+	}
+	
 	@GetMapping(path = "/bikemodels", produces = "application/json")
 	public List<BikeModel> getAllBike() {
 		return service.getAllBikeModel();
@@ -43,3 +49,4 @@ public class BikeModelController {
 	}
 
 }
+;

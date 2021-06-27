@@ -23,12 +23,12 @@ public class UserController {
 	private UserService service;
 	
 	@PostMapping(path = "/add", consumes = "application/json")
-	public void addFlight(@RequestBody User user) {
-		service.addUser(user);
+	public int addUser(@RequestBody User user) {
+		return service.addUser(user);
 	}
 	
 	@GetMapping(path = "/user/{id}", produces = "application/json")
-	public User getFlight(@PathVariable("id") int id) {
+	public User getUser(@PathVariable("id") int id) {
 		return service.getById(id);
 	}
 	
@@ -41,4 +41,9 @@ public class UserController {
 	public void deleteUser(@PathVariable("id") int id) {
 		service.removeUser(id);
 	}
+	
+//	@PostMapping(value = "/update")
+//	public void updateUser(@PathVariable("id") int id) {
+//		service.removeUser(id);
+//	}
 }

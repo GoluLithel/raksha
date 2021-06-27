@@ -11,12 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raksha.entity.Bike;
 import com.raksha.entity.BikeModel;
 import com.raksha.entity.Car;
 import com.raksha.entity.CarModel;
+import com.raksha.entity.UserLogin;
+import com.raksha.mail.Mail;
+import com.raksha.response.OTPResponse;
 import com.raksha.service.BikeModelService;
 import com.raksha.service.BikeService;
 import com.raksha.service.CarModelService;
@@ -41,6 +46,21 @@ public class MainController {
 	
 	@Autowired
 	private BikeModelService  bikeModelservice;
+	
+	
+//	@GetMapping(path = "/getOTP", produces = "application/json")
+//	public List<String> getMessage(){
+//		List<String> list = new ArrayList<String>();
+//		list.add("Message Successfully Send");
+//		String OTP = Mail.sendOTP("kuranjekar.sonali@gmail.com");
+//		System.out.println(OTP);
+//		return list;
+//	}
+	
+	@PostMapping(path = "/getOTP", consumes = "application/json")
+	public OTPResponse getOTP(@RequestBody UserLogin userLogin) {
+		return Mail.sendOTP(userLogin.getEmailId());
+	}
 	
 	
 	@GetMapping(path = "/getBikeBrands", produces = "application/json")
@@ -149,10 +169,10 @@ public class MainController {
 		HashMap<String, String> map = new HashMap<>();
 		if(car != null) {
 			map.put("vehicleType","Car");
-			map.put("modelTypeId",car.getCarModel()+"");
+			map.put("modelTypeId",car.getVehicleModel()+"");
 		}else if( bike != null) {
 			map.put("vehicleType","Bike");
-			map.put("modelTypeId",bike.getBikeModel()+"");
+			map.put("modelTypeId",bike.getVehicleModel()+"");
 		}else {
 			map.put("vehicleType","Not Found");
 			map.put("modelType","Not Applicable");

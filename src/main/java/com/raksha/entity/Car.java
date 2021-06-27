@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "car")
-public class Car{
+public class Car implements Vehicle{
 	
 	@Id
 	@Column(name = "regi_no")
@@ -24,11 +24,11 @@ public class Car{
 		this.registrationNo = registrationNo;
 	}
 
-	public int getCarModel() {
+	public int getVehicleModel() {
 		return carModelId;
 	}
 
-	public void setCarModel(int carModelId) {
+	public void setVehicleModel(int carModelId) {
 		this.carModelId = carModelId;
 	}
 	
