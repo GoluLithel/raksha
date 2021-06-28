@@ -118,7 +118,7 @@ public class MainController {
 				if(userRepo.mobileCount(userLogin.getMobileNo())>=1) {
 					String email = userRepo.getEmail(userLogin.getMobileNo());
 					otpResponse = Mail.sendOTP(email);
-					otpResponse.setId(adminRepo.getIdByEmail(email));
+					otpResponse.setId(userRepo.getIdByEmail(email));
 					return otpResponse;
 				}else {
 					otpResponse.setId(0);
@@ -129,7 +129,7 @@ public class MainController {
 			}else {
 				if(userRepo.emailCount(userLogin.getEmailId())>=1) {
 					otpResponse = Mail.sendOTP(userLogin.getEmailId());
-					otpResponse.setId(adminRepo.getIdByEmail(userLogin.getEmailId()));
+					otpResponse.setId(userRepo.getIdByEmail(userLogin.getEmailId()));
 					return otpResponse;
 				}else {
 					otpResponse.setId(0);
