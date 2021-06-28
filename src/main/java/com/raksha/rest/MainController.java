@@ -79,13 +79,17 @@ public class MainController {
 					String email = adminRepo.getEmail(userLogin.getMobileNo());
 					String password = adminRepo.getPassword(email);
 					if(userLogin.getPassword().equals(password)) {
-						return Mail.sendOTP(email);
+						otpResponse = Mail.sendOTP(email);
+						otpResponse.setId(adminRepo.getIdByEmail(email));
+						return otpResponse;
 					}else {
+						otpResponse.setId(0);
 						otpResponse.setOTP("NO OTP");
 						otpResponse.setStatus("INVALID PASSWORD");
 						return otpResponse;
 					}
 				}else {
+					otpResponse.setId(0);
 					otpResponse.setOTP("NO OTP");
 					otpResponse.setStatus("INVALID MOBILE NO");
 					return otpResponse;
@@ -94,8 +98,11 @@ public class MainController {
 				if(adminRepo.emailCount(userLogin.getEmailId())>=1) {
 					String password = adminRepo.getPassword(userLogin.getEmailId());
 					if(userLogin.getPassword().equals(password)) {
-						return Mail.sendOTP(userLogin.getEmailId());
+						otpResponse = Mail.sendOTP(userLogin.getEmailId());
+						otpResponse.setId(adminRepo.getIdByEmail(userLogin.getEmailId()));
+						return otpResponse;
 					}else {
+						otpResponse.setId(0);
 						otpResponse.setOTP("NO OTP");
 						otpResponse.setStatus("INVALID PASSWORD");
 						return otpResponse;
@@ -110,16 +117,22 @@ public class MainController {
 			if(userLogin.getEmailId().equals("")) {
 				if(userRepo.mobileCount(userLogin.getMobileNo())>=1) {
 					String email = userRepo.getEmail(userLogin.getMobileNo());
-					return Mail.sendOTP(email);
+					otpResponse = Mail.sendOTP(email);
+					otpResponse.setId(adminRepo.getIdByEmail(email));
+					return otpResponse;
 				}else {
+					otpResponse.setId(0);
 					otpResponse.setOTP("NO OTP");
 					otpResponse.setStatus("INVALID MOBILE NO");
 					return otpResponse;
 				}
 			}else {
 				if(userRepo.emailCount(userLogin.getEmailId())>=1) {
-					return Mail.sendOTP(userLogin.getEmailId());
+					otpResponse = Mail.sendOTP(userLogin.getEmailId());
+					otpResponse.setId(adminRepo.getIdByEmail(userLogin.getEmailId()));
+					return otpResponse;
 				}else {
+					otpResponse.setId(0);
 					otpResponse.setOTP("NO OTP");
 					otpResponse.setStatus("INVALID MAIL ADDRESS");
 					return otpResponse;

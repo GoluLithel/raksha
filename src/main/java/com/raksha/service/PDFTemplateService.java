@@ -57,7 +57,7 @@ public class PDFTemplateService {
 				+"	</head>"
 				+"	<body>"
 				+"		<div>"
-				+"			<h3>RAKSHA</h3><small>Â© 2020 Copyright: Raksha Vehicle Insurance Pvt. Ltd.</small>"
+				+"			<h3>RAKSHA</h3><small>© 2020 Copyright: Raksha Vehicle Insurance Pvt. Ltd.</small>"
 				+"		</div>"
 				+"			<table >"
 				+"				<tr>"

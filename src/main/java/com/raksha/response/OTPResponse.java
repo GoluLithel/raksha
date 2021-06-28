@@ -4,6 +4,7 @@ public class OTPResponse {
 	
 	private String OTP;
 	private String Status;
+	private int id;
 	
 	
 	public String getOTP() {
@@ -17,6 +18,12 @@ public class OTPResponse {
 	}
 	public void setStatus(String status) {
 		Status = status;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

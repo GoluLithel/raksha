@@ -73,6 +73,8 @@ public class Mail {
 		
 		// Sending OTP Response Object
 		OTPResponse otpResponse = new OTPResponse();
+		
+		
 
 		try {
 			// Create a default MimeMessage object.
