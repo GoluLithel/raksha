@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raksha.entity.CarModel;
+import com.raksha.request.BikeModelRequest;
 import com.raksha.request.CarModelRequest;
 import com.raksha.service.CarModelService;
 
@@ -34,8 +35,9 @@ public class CarModelController {
 		return service.getById(id);
 	}
 	
-	@PostMapping(path = "/getCarId", consumes = "application/json", produces = "application/json")
-	public int getIdByDetails(@RequestBody CarModelRequest carModelReq) {
+	@PostMapping(path = "/getCarId", consumes = "application/json")
+	public int getIdByDetails(@RequestBody BikeModelRequest carModelReq) {
+		System.out.println(carModelReq.getBrand());
 		return service.getIdByDetails(carModelReq);
 	}
 	

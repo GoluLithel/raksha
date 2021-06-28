@@ -4,6 +4,9 @@ public class BikeModelRequest {
 	private String brand;
 	private String model;
 	private int year;
+	private String variant;
+	private String fuel;
+	
 	public String getBrand() {
 		return brand;
 	}
@@ -22,6 +25,16 @@ public class BikeModelRequest {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	
-	
+	public String getVariant() {
+		return variant;
+	}
+	public void setVariant(String variant) {
+		this.variant = variant;
+	}
+	public String getFuel() {
+		return fuel;
+	}
+	public void setFuel(String fuel) {
+		this.fuel = fuel;
+	}
 }

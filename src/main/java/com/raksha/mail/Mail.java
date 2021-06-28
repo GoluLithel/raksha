@@ -11,6 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.raksha.entity.User;
 import com.raksha.response.OTPResponse;
 import com.sun.mail.smtp.SMTPAddressFailedException;
 
@@ -114,6 +115,54 @@ public class Mail {
 		
 		
 		return otpResponse;
+	}
+
+	public static String sendWelcomeMail(User user, String url) {
+		// Get the Session object.		
+				Session session= setSession();
+				
+				// Sending OTP Response Object
+				OTPResponse otpResponse = new OTPResponse();
+
+				try {
+					// Create a default MimeMessage object.
+					MimeMessage message = new MimeMessage(session);
+
+					// Set From: header field of the header.
+					message.setFrom(new InternetAddress(SENDER));
+
+					// Set To: header field of the header.
+					message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getGmail()));
+
+					// Set Subject: header field
+					message.setSubject("Welcome in Raksha");
+
+					// Now set the actual message
+					message.setText("Hi "+user.getFname()
+							+",\n\n\tWelcome in Raksha Vehicle Insurance Pvt Ltd. "
+							+ "\n\n\tPlease find below the link to download Insurance Policy."
+							+ "\n\n\tClick Here ->"+url
+							+"\n\nThanks and Regards,"
+							+ "\nRaksha Vehicle Insurance Pvt Ltd."
+							+ "\nraksha.vehicle.insurance@gmail.com");
+
+					// Send message
+					Transport.send(message);
+					System.out.println("MAIL IS SENT");
+					return "MAIL IS SENT";
+				} catch (SMTPAddressFailedException e) {
+					System.out.println(e.toString());
+					System.out.println("INVALID MAIL ADDRESS");
+					return "INVALID MAIL ADDRESS";
+
+				} catch (MessagingException mex) {
+					mex.printStackTrace();
+					System.out.println(mex.toString());
+					System.out.println("MAIL IS NOT SENT");
+					return "MAIL IS NOT SENT";
+
+				}
+		
 	}
 
 }

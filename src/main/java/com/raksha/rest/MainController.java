@@ -19,6 +19,7 @@ import com.raksha.entity.Bike;
 import com.raksha.entity.BikeModel;
 import com.raksha.entity.Car;
 import com.raksha.entity.CarModel;
+import com.raksha.entity.User;
 import com.raksha.entity.UserLogin;
 import com.raksha.mail.Mail;
 import com.raksha.repo.AdminRepository;
@@ -28,6 +29,7 @@ import com.raksha.service.BikeModelService;
 import com.raksha.service.BikeService;
 import com.raksha.service.CarModelService;
 import com.raksha.service.CarService;
+import com.raksha.service.PDFDownloadService;
 import com.raksha.service.UserService;
 
 @RestController
@@ -52,9 +54,12 @@ public class MainController {
 	@Autowired
 	private UserRepository userRepo;
 	
+	
 	@Autowired
 	private AdminRepository adminRepo;
 	
+	@Autowired
+	private PDFDownloadService urlService;
 	
 //	@GetMapping(path = "/getOTP", produces = "application/json")
 //	public List<String> getMessage(){
@@ -243,8 +248,10 @@ public class MainController {
 	}
 	
 	@GetMapping(path = "/sendMail/{uid}/{iid}", produces = "application/json")
-	public void sendMail(@PathVariable("id") String id) {
-		
+	public String sendWelcomeMail(@PathVariable("uid") int uid, @PathVariable("iid") int iid) {
+		User user = userService.getById(uid);
+		String url = urlService.getPDFDownloadURL(iid);
+		return Mail.sendWelcomeMail(user,url);
 	}
 
 }

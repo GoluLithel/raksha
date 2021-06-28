@@ -3,6 +3,7 @@ package com.raksha.service;
 import java.util.List;
 
 import com.raksha.entity.CarModel;
+import com.raksha.request.BikeModelRequest;
 import com.raksha.request.CarModelRequest;
 
 public interface CarModelService {
@@ -19,6 +20,6 @@ public interface CarModelService {
 	
 	List<CarModel> getVariantFromBrandModel(String brand, String model);
 
-	int getIdByDetails(CarModelRequest carModelReq);
+	int getIdByDetails(BikeModelRequest carModelReq);
 
 }
