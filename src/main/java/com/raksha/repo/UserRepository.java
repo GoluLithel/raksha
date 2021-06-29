@@ -26,7 +26,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	 @Query("SELECT u.gmail FROM User u Where mobileNo=:mobi")
 	 public String getEmail(@Param("mobi")String mobileNo);
 	 
-	 @Query("SELECT u.id FROM Admin u  Where gmail=:mail")
+	 @Query("SELECT u.id FROM User u  Where gmail=:mail")
 	 public int getIdByEmail(@Param("mail")String gmail);
 	 
 //	 @Modifying

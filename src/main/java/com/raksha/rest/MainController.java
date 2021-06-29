@@ -108,6 +108,7 @@ public class MainController {
 						return otpResponse;
 					}
 				}else {
+					otpResponse.setId(0);
 					otpResponse.setOTP("NO OTP");
 					otpResponse.setStatus("INVALID MAIL ADDRESS");
 					return otpResponse;
@@ -138,6 +139,7 @@ public class MainController {
 					return otpResponse;
 				}
 			}
+//			return null;
 		}
 	}
 	
@@ -261,10 +263,10 @@ public class MainController {
 	}
 	
 	@GetMapping(path = "/sendMail/{uid}/{iid}", produces = "application/json")
-	public String sendWelcomeMail(@PathVariable("uid") int uid, @PathVariable("iid") int iid) {
+	public void sendWelcomeMail(@PathVariable("uid") int uid, @PathVariable("iid") int iid) {
 		User user = userService.getById(uid);
 		String url = urlService.getPDFDownloadURL(iid);
-		return Mail.sendWelcomeMail(user,url);
+		Mail.sendWelcomeMail(user,url);
 	}
 
 }
